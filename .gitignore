@@ -2,3 +2,4 @@
 /data/csv/COVID-19_Test_to_Treat.csv
 /data/csv/COVID-19_Public_Therapeutic_Locator.csv
 /notebooks/zipCodes.ipynb
+/notebooks/fips.ipynb
