@@ -1,5 +1,6 @@
 /data/img
 /data/csv/COVID-19_Test_to_Treat.csv
 /data/csv/COVID-19_Public_Therapeutic_Locator.csv
+/data/csv/national_aiannh_by_state2020.txt
 /notebooks/zipcodes_to_counties.ipynb
 /notebooks/fips_counties.ipynb
