@@ -10,6 +10,7 @@
 /data/csv/state-geocodes-v20.csv
 /data/csv/state-geocodes-v2019.xlsx
 /data/csv/zipcode_to_county.csv
+/data/data_cleaned
 
 /notebooks/fips_counties.ipynb
 #/notebooks/fips_states.ipynb
