@@ -10,7 +10,7 @@ import sys
 if len(sys.argv)>1: 
 
     ## User inserted zipcode
-    print('User ZipCode:', sys.argv, type(sys.argv[1]))
+    print('User ZipCode: ', sys.argv, type(sys.argv[1]))
     
     # Getting user State and County codes
     myUserLocation = MyUserLocation(sys.argv[1])
