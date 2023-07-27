@@ -23,10 +23,12 @@ df_ = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips
 
 ## Loading local datasets ###
 print("Loading datasets for GeoMaps..")
-df_zipcodes = pd.read_csv('../data/csv/zipcode_to_county.csv')
-df = pd.read_csv('../data/csv/covid_cases_fips_wa.csv')
+df_zipcodes = pd.read_csv('./data/csv/zipcode_to_county.csv')
+
+df = pd.read_csv('./data/csv/covid_cases_fips_wa.csv')
+
 df.drop(columns='Unnamed: 0', inplace=True)
-df.sort_values(by='nr_fips',ascending=True)
+df.sort_values(by='county_fips_code',ascending=True)
 
 
 ### Plotting Map ###
@@ -44,7 +46,7 @@ df.sort_values(by='nr_fips',ascending=True)
 #fig.show()
 
 
-fig = px.choropleth_mapbox(df, geojson=counties, locations='nr_fips', color='nr_cases',
+fig = px.choropleth_mapbox(df, geojson=counties, locations='county_fips_code', color='case_month',
                            color_continuous_scale="Viridis",
                         #    color_continuous_scale="Blues",
                            range_color=(0, 120000),
@@ -62,9 +64,9 @@ fig = px.choropleth_mapbox(df, geojson=counties, locations='nr_fips', color='nr_
 print("..Done!")
 
 ### Creating a Folder images
-if not os.path.exists("../images"):
-    os.mkdir("../images")
-fig.write_html("../images/mymap.html")
+if not os.path.exists("./images"):
+    os.mkdir("./images")
+fig.write_html("./images/mymap.html")
 ### Saving and exporting Maps as HTML
 print("Generating html..")
 #with Path("images/myfile.html").open("w") as f:
@@ -75,7 +77,9 @@ print("Generating html..")
 
 ### Saving Maps as Images files
 print("Saving images in directory..")
-fig.write_image("../images/map1.png")
+
+fig.write_image("./images/map1.png")
+print("Saving images in directory..!")
 #fig.write_image("images/fig1.jpeg")
-fig.write_image("../images/map1.svg")
+fig.write_image("./images/map1.svg")
 #fig.write_image("images/fig1.pdf")

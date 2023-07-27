@@ -14,6 +14,7 @@ if len(sys.argv)>1:
     
     # Getting user State and County codes
     myUserLocation = MyUserLocation(sys.argv[1])
+
     print('User State code value:', myUserLocation.user_state)
     print('User County code value:', myUserLocation.user_county)
 
@@ -21,7 +22,7 @@ if len(sys.argv)>1:
     myMap = MyGeoMap(myUserLocation.user_state)
     #myBarChart = MyBarChart(sys.argv[1])
     
-    myUserLocation.getStateUser()
+    
 
 ## User didn't inform Zipcode: provide overview of national cases.
 else:
