@@ -1,5 +1,5 @@
 
-from src.MyGeoMap import *
+#from src.MyGeoMap import *
 #from src.MyBarChart import *
 from src.MyUserLocation import *
 import sys
@@ -30,8 +30,8 @@ if len(sys.argv)>1:
     print('Initializing Charts from  user inputs')
     print('=====================================')
     map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name)
-    #bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
-    #trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
+    bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
+    trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
     
     
 

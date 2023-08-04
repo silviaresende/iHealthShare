@@ -67,7 +67,7 @@ class MyMap:
 
         fig.update_layout(modebar=config)
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-        fig.write_html('./images/MyMap_'f'{self.state_name}.html')
-        # fig.write_html('./images/MyMap.html')
+        #fig.write_html('./images/MyMap_'f'{self.state_name}.html')
+        fig.write_html('./images/MyMap.html')
         fig.show()
 
