@@ -14,6 +14,8 @@ class MyMap:
         from urllib.request import urlopen
         import json 
         import plotly.express as px
+        from pathlib import Path
+        import os
 
         df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
             'state_code': int,
@@ -38,6 +40,8 @@ class MyMap:
         
         lat_log = dict(zip(['lat', 'lon'], [latitude, longitude]))
         print('Lat/log:', lat_log)
+        print('=====================================')
+        print(' ')
 
         fig = px.choropleth_mapbox(data, geojson=counties, locations='county_fips_code', color='cases',
                            color_continuous_scale="Viridis_r",
@@ -68,6 +72,21 @@ class MyMap:
         fig.update_layout(modebar=config)
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         #fig.write_html('./images/MyMap_'f'{self.state_name}.html')
-        fig.write_html('./images/MyMap.html')
-        fig.show()
+
+        print('Saving MyMap..')
+        if not os.path.exists("./images"):
+            os.mkdir("./images")
+
+        with Path("./images/myMap.html").open("w") as f:
+            f.write(fig.to_html())
+
+        #fig.write_html('./images/mymap.html')
+        fig.write_image("./images/myMap.png")
+        fig.write_image("./images/myMap.svg")
+        # fig.show()
+
+
+
+
+
 

@@ -7,9 +7,11 @@ class MyBar:
     def plotMyBar(self) -> None:
         import pandas as pd
         import seaborn as sns
-        import matplotlib.pyplot as plt 
+        import matplotlib.pyplot as plt
+        from pathlib import Path
+        import os 
 
-        df = pd.read_csv('data/data_charts/cases_by_counties_states.csv', index_col=0)
+        df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0)
     
         df_state = df[df['state_code']==int(self.state_code)].sort_values(by='cases', ascending=False).head(5)
         df_state['cases_pct'] = df_state['cases']/(df_state['cases'].sum()) *100
@@ -18,10 +20,10 @@ class MyBar:
         price = df_state['cases_pct']
 
         # Figure Size
-        fig, ax = plt.subplots(figsize=(8,2.5))
+        fig, ax = plt.subplots(figsize=(7,2.5))
 
         # Horizontal Bar Plot
-        ax.barh(name, price)
+        ax.barh(name, price, color='purple')
 
         # Add padding between axes and labels
         ax.xaxis.set_tick_params(pad=2)
@@ -41,43 +43,24 @@ class MyBar:
                         # i.get_width()+0.2, 
                         i.get_y()+0.5,
                         str(round((i.get_width()), 1)),
-                        fontsize=8, 
-                        fontweight='bold',
-                    color='grey')
+                        fontsize=9, 
+                        # fontweight='bold',
+                    color='black')
 
         # Add Plot Title
-        ax.set_title('Top 5 Counties in Covid-19 Cases ',loc='left' )
+        #ax.set_title('Top 5 Counties in Covid-19 Cases ',loc='left' )
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+        ax.spines['bottom'].set_visible(False)
+        ax.spines['left'].set_visible(False)
+        ax.get_xaxis().set_ticks([])
+        # ax.get_yaxis().set_ticks([])
         plt.xlabel("Percentage of cases (%)")
         fig.tight_layout()
-        plt.savefig('./images/barchar_top5_counties.png',)
-        print('passou aqui ')
-        
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        plt.figure(figsize=(8,2.5))
-        by_counties = sns.countplot(y = 'cases',  data = df, palette = "Set2")
-        # Show the plot
-        plt.title(f'Count By {"Counties"} Group')
-        plt.ylabel("")
-        plt.xlabel("Number of Cases");
-        fig = by_counties.get_figure()
-        fig.savefig('./images/barchart_counties.png')
-        pass
+        print('Saving BarChart..')
+        if not os.path.exists("./images"):
+            os.mkdir("./images")
+        fig.savefig('./images/myBarChart.png',)
+       
+       

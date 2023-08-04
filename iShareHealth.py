@@ -32,6 +32,7 @@ if len(sys.argv)>1:
     map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name)
     bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
     trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
+    print('=====================================')
     
     
 
@@ -39,7 +40,5 @@ if len(sys.argv)>1:
 else:
     ## Get the trends f123456
     #  US cases in tehe last 3 or 6 months (maybe a year).
-    print("")
-
-print("End of iShareHealth.py script Execution")
+    print("No ZipCode found")
 
