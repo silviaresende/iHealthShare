@@ -1,11 +1,11 @@
-/AnimaPackage-React-VhCQV
+
 /data
 
 /notebooks
 
-/src/__pycache__
 
-# /AnimaPackage-React-VhCQV
+
+/AnimaPackage-React-VhCQV
 # /data/img
 
 # #/data/csv/2010_zcta_to_county.csv
@@ -24,18 +24,18 @@
 
 
 # /notebooks/00_Cleaning_Data_US_Cases.ipynb
-# /notebooks/00_User_Location.ipynb
-# /notebooks/01_TimeSeries_US_Cases.ipynb
-# /notebooks/02_Ethnological_Charts.ipynb
-# /notebooks/03_Geographic_Charts.ipynb
-# /notebooks/fips_counties.ipynb
-# #/notebooks/fips_states.ipynb
-# /notebooks/User_Location.ipynb
-# /notebooks/UserCasesMap.ipynb
-# /notebooks/zipcodes_to_counties.ipynb
+#/notebooks/00_User_Location.ipynb
+/notebooks/01_TimeSeries_US_Cases.ipynb
+/notebooks/02_Ethnological_Charts.ipynb
+/notebooks/03_Geographic_Charts.ipynb
+/notebooks/fips_counties.ipynb
+#/notebooks/fips_states.ipynb
+/notebooks/User_Location.ipynb
+/notebooks/UserCasesMap.ipynb
+/notebooks/zipcodes_to_counties.ipynb
 
-# /src/__pycache__
-# #/src/MyBarChart.py
-# #/src/MyGeoMap.py
-# #/src/MyUserLocation.py
+/src/__pycache__
+#/src/MyBarChart.py
+#/src/MyGeoMap.py
+#/src/MyUserLocation.py
 
