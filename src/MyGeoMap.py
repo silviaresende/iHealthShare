@@ -52,13 +52,50 @@ fig = px.choropleth_mapbox(df, geojson=counties, locations='county_fips_code', c
                            range_color=(0, 120000),
                            mapbox_style="carto-positron",
                            zoom=5.2, 
-                           center = {"lat": 47.3225, "lon": -121.0520},
+                        #    center = {"lat": 47.3225, "lon": -121.0520},
                            opacity=0.5,
                            labels={'nr_cases':'Qtd Cases', 
-                                   'nr_fips': 'FIP County ' }
+                                   'nr_fips': 'FIP County ' },
                           )
-# fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-#fig.show()
+config = {
+    'color':'#1f77b4',
+    'remove':[ "autoScale2d", "autoscale", "editInChartStudio", "editinchartstudio", 
+              "hoverCompareCartesian", "hovercompare", "lasso", "lasso2d", "orbitRotation", 
+              "orbitrotation", "pan", "pan2d", "pan3d", "reset", "resetCameraDefault3d", 
+              "resetCameraLastSave3d", "resetGeo", "resetSankeyGroup", "resetScale2d", "resetViewMapbox", 
+              "resetViews", "resetcameradefault", "resetcameralastsave", "resetsankeygroup", "resetscale", 
+              "resetview", "resetviews", "select", "select2d", "sendDataToCloud", "senddatatocloud", "tableRotation", 
+              "tablerotation", "toImage", "toggleHover", "toggleSpikelines", "togglehover", "togglespikelines", "toimage",
+                "zoom", "zoom2d", "zoom3d", "zoomIn2d", "zoomInGeo", "zoomInMapbox", "zoomOut2d", "zoomOutGeo", 
+                "zoomOutMapbox", "zoomin", "zoomout"] ,
+    'orientation':'h'
+
+
+ }
+#     'scrollZoom': False,
+#     # 'templateitemname':False,
+#     # 'visible': False,
+#     # 'displayModeBar': True,
+#     # 'editable': True,
+#     # 'showLink':False,
+#     # 'displaylogo': False
+# }
+
+
+# print("dsfhsldkfh:",type(fig))
+# fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0}, config=config)
+# fig.update_layout(config = {'displayModeBar': False})
+# print(fig.layout.__setattr__.
+# print(fig.__dict__['_config'].keys())
+# __setattr__('displayModeBar',False)
+
+#fig._config['displayModeBar'] = False
+# fig.show(config = {'displayModeBar': False})
+# fig.__dict__['modebar_orientation']=  'v'
+# fig.__dict__['modebar_orientation']=  'v'   
+fig.update_layout(modebar=config)
+
+
 
 
 print("..Done!")
