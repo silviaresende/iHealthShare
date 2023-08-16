@@ -10,14 +10,24 @@ from  src.MyBar import *
 from src.MyTrends import *
 
 
+# from pydrive.auth import GoogleAuth
+# from pydrive.drive import GoogleDrive
+# # from google.colab import auth
+# from oauth2client.client import GoogleCredentials
+
+
+
+
+
+# fileDownload = GoogleDrive(GoogleAuth)
+# .CreateFile("https://drive.google.com/drive/folders/1b9yRDiwBhV4hc3fZtAm2vZ7kvSQJwSqX?usp=sharing")
 
 # streamlit run simple_app.py
-
 import streamlit as st
 ##
 
-st.title("Getting data for user location")
-user_input = st.text_input('Please enter your zipoced: ', max_chars = 500)
+st.header("Getting data analysis for user location")
+user_input = st.text_input('Please enter your location (Zipcode): ', max_chars = 8)
 
 ## User informed its zipcode: provide costumized information for its area.
 #if len(sys.argv)>1: 
@@ -50,15 +60,17 @@ if len(user_input)>1:
         html_data = f.read()
 
     ## Show in webpage
-    st.header("Show an external HTML")
+    st.write("Covid-19 Cases in your State ")
     st.components.v1.html(html_data,height=400)
 
 
 
 
     bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
+    st.write("Cases by Counties ")
     st.image("/Users/silviaresende/Documents/TOP/iHealthShare/images/myBarChart.png")
     trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
+    st.write("Trends for Over Last Six Months ")
     st.image("/Users/silviaresende/Documents/TOP/iHealthShare/images/myTrends.png")
     print('=====================================')
     
