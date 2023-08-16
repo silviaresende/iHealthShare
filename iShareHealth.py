@@ -30,7 +30,8 @@ if len(user_input)>1:
     
     ## User input zipcode
     print('===============================')
-    print('User zipcode: ', user_input)#, sys.argv[1])
+    print('User zipcode: ', user_input)
+    #, sys.argv[1])
     print('===============================')
     
 
