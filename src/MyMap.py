@@ -1,14 +1,14 @@
 class MyMap:
     
-    def __init__(self,state_code, state_name) -> None:
+    def __init__(self,state_code, state_name, st) -> None:
         self.state_code = state_code
         self.state_name = state_name
-        self.load_data()
+        self.load_data(st)
         
         pass
 
 
-    def load_data(self)-> None:
+    def load_data(self,st)-> None:
         
         import pandas as pd
         from urllib.request import urlopen
@@ -95,14 +95,14 @@ class MyMap:
         fig.update_layout(modebar=config)
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         #fig.write_html('./images/MyMap_'f'{self.state_name}.html')
-
+        st.write("here!")
         print('Saving MyMap..')
         if not os.path.exists("./images"):
             os.mkdir("./images")
 
         with Path("./images/myMap.html").open("w") as f:
             f.write(fig.to_html())
-
+        
         #fig.write_html('./images/mymap.html')
         fig.write_image("./images/myMap.png")
         fig.write_image("./images/myMap.svg")

@@ -48,9 +48,9 @@ if len(user_input)>1:
     print('=====================================')
     print('Initializing Charts from  user inputs')
     print('=====================================')
-    map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name)
+    map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name, st)
 
-    path_to_html = "/Users/silviaresende/Documents/TOP/iHealthShare/images/myMap.html" 
+    path_to_html = "./images/myMap.html" 
 
     # Read file and keep in variable
     with open(path_to_html,'r') as f: 
