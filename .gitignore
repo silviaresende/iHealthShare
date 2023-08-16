@@ -1,41 +1,10 @@
 
-/data
-
-/notebooks
-
-
-
 /AnimaPackage-React-VhCQV
-# /data/img
-
-# #/data/csv/2010_zcta_to_county.csv
-# /data/csv/covid_cases_fips_wa.csv
-# /data/csv/COVID-19_Case_Surveillance_Public_Use_Data_with_Geography.csv
-# /data/csv/COVID-19_Public_Therapeutic_Locator.csv
-# /data/csv/COVID-19_Test_to_Treat.csv
-# #/data/csv/fips_county.csv
-# /data/csv/fips_state.csv
-# /data/csv/national_aiannh_by_state2020.txt
-# /data/csv/state-geocodes-v20.csv
-# /data/csv/state-geocodes-v2019.xlsx
-# /data/csv/zipcode_to_county.csv
-# /data/data_cleaned
-# /data/data_charts
-
-
-# /notebooks/00_Cleaning_Data_US_Cases.ipynb
-#/notebooks/00_User_Location.ipynb
-/notebooks/01_TimeSeries_US_Cases.ipynb
-/notebooks/02_Ethnological_Charts.ipynb
-/notebooks/03_Geographic_Charts.ipynb
-/notebooks/fips_counties.ipynb
-#/notebooks/fips_states.ipynb
-/notebooks/User_Location.ipynb
-/notebooks/UserCasesMap.ipynb
-/notebooks/zipcodes_to_counties.ipynb
-
+/data
+/notebooks
 /src/__pycache__
-#/src/MyBarChart.py
-#/src/MyGeoMap.py
-#/src/MyUserLocation.py
+/src/MyDonut.py
+/src/pyServer.py
+
+
 

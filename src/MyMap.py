@@ -83,7 +83,7 @@ class MyMap:
         #fig.write_html('./images/mymap.html')
         fig.write_image("./images/myMap.png")
         fig.write_image("./images/myMap.svg")
-        # fig.show()
+        #fig.show()
 
 
 
