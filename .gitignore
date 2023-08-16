@@ -1,10 +1,13 @@
 
 /AnimaPackage-React-VhCQV
-/data
 /notebooks
 /src/__pycache__
 /src/MyDonut.py
 /src/pyServer.py
 
-
+/data
+/data/bd
+/data/csv
+/data/data_charts
+/data/data_cleaned
 

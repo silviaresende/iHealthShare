@@ -16,15 +16,29 @@ class MyMap:
         import plotly.express as px
         from pathlib import Path
         import os
+        import psycopg2
+        
+        engine = psycopg2.connect(
+            database="postgres",
+            user="postgres",
+            password="_healthshare123",
+            host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
+            port='5432'
+        )
 
-        df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
-            'state_code': int,
-            'state_res': str,
-            'state_name': str,
-            'county_fips_code':	str,
-            'county_name': str
-        })
+        # df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
+        #     'state_code': int,
+        #     'state_res': str,
+        #     'state_name': str,
+        #     'county_fips_code':	str,
+        #     'county_name': str
+        # })
+        sql = "SELECT * FROM public.cases_by_counties_states_"
+        
+        df = pd.read_sql(sql, engine)
+
         # data = df[df['state_code']=='06']
+        df['state_code'] =df['state_code'].astype('Int64')
         data = df[df['state_code']==int(self.state_code)]
         # print('hello:', self.state_code, df[df['state_code']=='53'].shape[0])
         print('State Code:', self.state_code)
@@ -33,8 +47,17 @@ class MyMap:
         with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
             counties = json.load(response)
 
-        df_lat_lon = pd.read_csv('./data/csv/us-state-capitals.csv')
+        # df_lat_lon = pd.read_csv('./data/csv/us-state-capitals.csv')
         
+        
+       
+        sql = "SELECT * FROM public.us_state_capitals_"
+        
+        df = pd.read_sql(sql, engine)
+        
+        df['latitude'] = df['latitude'].astype(float)
+        df['longitude'] = df['longitude'].astype(float)
+        df_lat_lon = df
         latitude = df_lat_lon[df_lat_lon['name']==self.state_name].iloc[0,2]
         longitude = df_lat_lon[df_lat_lon['name']==self.state_name].iloc[0,3]
         

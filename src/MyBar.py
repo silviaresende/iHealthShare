@@ -10,9 +10,20 @@ class MyBar:
         import matplotlib.pyplot as plt
         from pathlib import Path
         import os 
+        import psycopg2
 
-        df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0)
-    
+        engine = psycopg2.connect(
+        database="postgres",
+        user="postgres",
+        password="_healthshare123",
+        host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
+        port='5432'
+)
+        sql = "SELECT * FROM public.cases_by_counties_states_"
+        
+        df = pd.read_sql(sql, engine)
+        #df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0)
+        df['state_code'] = df['state_code'].astype('Int64')
         df_state = df[df['state_code']==int(self.state_code)].sort_values(by='cases', ascending=False).head(5)
         df_state['cases_pct'] = df_state['cases']/(df_state['cases'].sum()) *100
 
