@@ -65,10 +65,10 @@ if len(user_input)>1:
 
     bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
     st.write("Cases by Counties ")
-    st.image("/Users/silviaresende/Documents/TOP/iHealthShare/images/myBarChart.png")
+    st.image("./images/myBarChart.png")
     trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
     st.write("Trends for Over Last Six Months ")
-    st.image("/Users/silviaresende/Documents/TOP/iHealthShare/images/myTrends.png")
+    st.image("./images/myTrends.png")
     print('=====================================')
     
     
