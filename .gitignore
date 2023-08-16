@@ -5,9 +5,33 @@
 /src/MyDonut.py
 /src/pyServer.py
 
-/data
+
 /data/bd
+
+
 /data/csv
+# /data/csv/2010_zcta_to_county.csv
+/data/csv/covid_cases_fips_wa.csv
+/data/csv/COVID-19_Case_Surveillance_Public_Use_Data_with_Geography.csv
+/data/csv/COVID-19_Public_Therapeutic_Locator.csv
+/data/csv/COVID-19_Test_to_Treat.csv
+# /data/csv/fips_county.csv
+# data/csv/fips_state.csv
+data/csv/fips_state.csv.zip
+# data/csv/national_aiannh_by_state2020.txt
+data/csv/state_fips_code.csv 
+data/csv/state-geocodes-v20.csv
+data/csv/state-geocodes-v2019.xlsx
+data/csv/us-state-capitals_.csv
+data/csv/us-state-capitals.csv
+data/csv/us-state-capitals.csv.zip
+# data/csv/zipcode_to_county.csv
+data/csv/zipcode_to_county.csv.zip
+
+
+
 /data/data_charts
 /data/data_cleaned
+/data/img
+/data/json
 
