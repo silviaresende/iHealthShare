@@ -14,6 +14,7 @@ from src.MyTrends import *
 # streamlit run simple_app.py
 
 import streamlit as st
+##
 
 st.title("Getting data for user location")
 user_input = st.text_input('Please enter your zipoced: ', max_chars = 500)
