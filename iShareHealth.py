@@ -36,7 +36,8 @@ if len(user_input)>1:
     
 
     # Getting user State and County codes
-    myUserLocation = MyUserLocation(user_input)#sys.argv[1])
+    myUserLocation = MyUserLocation(user_input)
+    # myUserLocation = MyUserLocation(user_input)#sys.argv[1])
     
     print('User State FIP Code: ', myUserLocation.user_state)
     print('User County FIP Code: ', myUserLocation.user_county)
