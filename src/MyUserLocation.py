@@ -10,9 +10,10 @@ class MyUserLocation:
     def getStateUser(self):
         import pandas as pd
         
-        df = pd.read_csv('./data/csv/zipcode_to_county.csv')
+        df = pd.read_csv('../data/csv/zipcode_to_county.csv')
         df.drop(columns='Unnamed: 0', inplace=True)
-        df_ = pd.read_csv('./data/csv/fips_state.csv')
+
+        df_ = pd.read_csv('../data/csv/fips_state.csv')
         
         self.user_state = str(df[df['ZCTA5']==int(self.zipcode)].iloc[0]['STATE'])
         self.user_county = str(df[df['ZCTA5']==int(self.zipcode)].iloc[0]['COUNTY'])
