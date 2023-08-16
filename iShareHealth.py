@@ -33,7 +33,7 @@ if len(user_input)>1:
     print('User zipcode: ', user_input)
     #, sys.argv[1])
     print('===============================')
-    
+    # st.image('https://images-rdts.s3.us-west-2.amazonaws.com/images-2.png')
 
     # Getting user State and County codes
     myUserLocation = MyUserLocation(user_input)
@@ -66,6 +66,8 @@ if len(user_input)>1:
     bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
     st.write("Cases by Counties ")
     st.image("./images/myBarChart.png")
+    # st.image("https://images-rdts.s3.us-west-2.amazonaws.com/myMap.png")
+    
     trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
     st.write("Trends for Over Last Six Months ")
     st.image("./images/myTrends.png")

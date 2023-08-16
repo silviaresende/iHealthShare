@@ -104,6 +104,8 @@ class MyMap:
             f.write(fig.to_html())
         
         #fig.write_html('./images/mymap.html')
+        # https://images-rdts.s3.us-west-2.amazonaws.com/images-2.png
+        fig.write_image("./images/myMap.png")
         fig.write_image("./images/myMap.png")
         fig.write_image("./images/myMap.svg")
         #fig.show()
