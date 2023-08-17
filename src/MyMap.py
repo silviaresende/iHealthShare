@@ -1,14 +1,14 @@
 class MyMap:
     
-    def __init__(self,state_code, state_name) -> None:
+    def __init__(self,state_code, state_name, engine) -> None:
         self.state_code = state_code
         self.state_name = state_name
-        self.load_data()
+        self.load_data(engine)
         
         pass
 
 
-    def load_data(self)-> None:
+    def load_data(self, engine)-> None:
         
         import pandas as pd
         from urllib.request import urlopen
@@ -16,15 +16,15 @@ class MyMap:
         import plotly.express as px
         from pathlib import Path
         import os
-        import psycopg2
+        # import psycopg2
         
-        engine = psycopg2.connect(
-            database="postgres",
-            user="postgres",
-            password="_healthshare123",
-            host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
-            port='5432'
-        )
+        # engine = psycopg2.connect(
+        #     database="postgres",
+        #     user="postgres",
+        #     password="_healthshare123",
+        #     host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
+        #     port='5432'
+        # )
 
         # df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
         #     'state_code': int,
@@ -105,10 +105,10 @@ class MyMap:
         
         #fig.write_html('./images/mymap.html')
         # https://images-rdts.s3.us-west-2.amazonaws.com/images-2.png
-        fig.write_image("./images/myMap.png")
-        fig.write_image("./images/myMap.png")
-        fig.write_image("./images/myMap.svg")
-        engine.close()
+        #fig.write_image("./images/myMap.png")
+        #fig.write_image("./images/myMap.png")
+        #fig.write_image("./images/myMap.svg")
+        
         #fig.show()
 
 

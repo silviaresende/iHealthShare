@@ -1,31 +1,29 @@
 
-#from src.MyGeoMap import *
-#from src.MyBarChart import *
 from src.MyUserLocation import *
 import sys
-#from urllib.request import urlopen
-#import json 
 from src.MyMap import *
 from  src.MyBar import * 
 from src.MyTrends import *
-
-
-
-
-
-
-# fileDownload = GoogleDrive(GoogleAuth)
-# .CreateFile("https://drive.google.com/drive/folders/1b9yRDiwBhV4hc3fZtAm2vZ7kvSQJwSqX?usp=sharing")
-
-# streamlit run simple_app.py
 import streamlit as st
+import psycopg2
 ##
 
+
+engine = psycopg2.connect(
+    database="postgres",
+    user="postgres",
+    password="_healthshare123",
+    host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
+    port='5432'
+        )
+st.cache_data(ttl=600)
 st.header("Getting data analysis for user location")
 user_input = st.text_input('Please enter your location (Zipcode): ', max_chars = 8)
 
 ## User informed its zipcode: provide costumized information for its area.
 #if len(sys.argv)>1: 
+
+
 if len(user_input)>1: 
     
     ## User input zipcode
@@ -48,7 +46,7 @@ if len(user_input)>1:
     print('=====================================')
     print('Initializing Charts from  user inputs')
     print('=====================================')
-    map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name)
+    map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name, engine)
 
     path_to_html = "./images/myMap.html" 
 
@@ -63,15 +61,16 @@ if len(user_input)>1:
 
 
 
-    bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name)
+    bar = MyBar(myUserLocation.user_state, myUserLocation.user_state_name, engine)
     st.write("Cases by Counties ")
     st.image("./images/myBarChart.png")
     # st.image("https://images-rdts.s3.us-west-2.amazonaws.com/myMap.png")
     
-    #trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
-    #st.write("Trends for Over Last Six Months ")
-    #st.image("./images/myTrends.png")
+    trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name,engine)
+    st.write("Trends for Over Last Six Months ")
+    st.image("./images/myTrends.png")
     print('=============== Done ======================')
+    engine.close()
     
     
 
@@ -79,5 +78,6 @@ if len(user_input)>1:
 else:
     ## Get the trends f123456
     #  US cases in tehe last 3 or 6 months (maybe a year).
+    engine.close()
     print("No ZipCode found")
 

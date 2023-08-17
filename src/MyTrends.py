@@ -1,23 +1,17 @@
 class MyTrends:
-    def __init__(self, state_code, state_name) -> None:
+    def __init__(self, state_code, state_name, engine) -> None:
         self.state_code = state_code
         self.state_name = state_name
-        self.GetTrends()
+        self.GetTrends(engine)
 
-    def GetTrends(self) -> None:
+    def GetTrends(self, engine) -> None:
         import pandas as pd
         import matplotlib.pyplot as plt 
         from pathlib import Path
         import os 
         import psycopg2
         
-        engine = psycopg2.connect(
-            database="postgres",
-            user="postgres",
-            password="_healthshare123",
-            host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
-            port='5432'
-        )
+        
         sql = "SELECT * FROM public.six_months_cases_by_counties_states_"
         print("ops aqui")
         df = pd.read_sql(sql, engine)
@@ -38,7 +32,7 @@ class MyTrends:
         ax.grid(visible=True, color='grey',
                         linestyle='-.', linewidth=0.5,
                         alpha=0.2)
-        ax.set_title("Trends Over Last Six Months",loc='left' )
+        #ax.set_title("Trends Over Last Six Months",loc='left' )
         plt.xlabel("")
         plt.ylabel("Number of Cases  ")
         ax.spines['top'].set_visible(False)
@@ -49,13 +43,12 @@ class MyTrends:
         #ax.get_yaxis().set_ticks([])        
         ax.legend().set_visible(False)
 
-
         print('Saving Trends..')
         if not os.path.exists("./images"):
             os.mkdir("./images")
         plt.savefig('./images/myTrends.png');
         print('.. Done!')
-        engine.close()
+       
         
 
        

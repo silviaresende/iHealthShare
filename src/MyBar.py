@@ -1,10 +1,10 @@
 class MyBar:
-    def __init__(self, state_code, state_name) -> None:
+    def __init__(self, state_code, state_name, engine) -> None:
         self.state_code = state_code
         self.state_name = state_name
-        self.plotMyBar()
+        self.plotMyBar(engine)
 
-    def plotMyBar(self) -> None:
+    def plotMyBar(self, engine) -> None:
         import pandas as pd
         import seaborn as sns
         import matplotlib.pyplot as plt
@@ -12,13 +12,7 @@ class MyBar:
         import os 
         import psycopg2
 
-        engine = psycopg2.connect(
-        database="postgres",
-        user="postgres",
-        password="_healthshare123",
-        host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
-        port='5432'
-)
+        
         sql = "SELECT * FROM public.cases_by_counties_states_"
         
         df = pd.read_sql(sql, engine)
@@ -73,6 +67,5 @@ class MyBar:
         if not os.path.exists("./images"):
             os.mkdir("./images")
         fig.savefig('./images/myBarChart.png',)
-        engine.close()
-       
+        
        
