@@ -48,7 +48,7 @@ if len(user_input)>1:
     print('=====================================')
     print('Initializing Charts from  user inputs')
     print('=====================================')
-    map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name, st)
+    map = MyMap(myUserLocation.user_state, myUserLocation.user_state_name)
 
     path_to_html = "./images/myMap.html" 
 

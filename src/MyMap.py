@@ -1,14 +1,14 @@
 class MyMap:
     
-    def __init__(self,state_code, state_name, st) -> None:
+    def __init__(self,state_code, state_name) -> None:
         self.state_code = state_code
         self.state_name = state_name
-        self.load_data(st)
+        self.load_data()
         
         pass
 
 
-    def load_data(self,st)-> None:
+    def load_data(self)-> None:
         
         import pandas as pd
         from urllib.request import urlopen
@@ -33,12 +33,12 @@ class MyMap:
         #     'county_fips_code':	str,
         #     'county_name': str
         # })
-        # sql = "SELECT * FROM public.cases_by_counties_states_"
+        sql = "SELECT * FROM public.cases_by_counties_states_"
         
-        # df = pd.read_sql(sql, engine)
+        df = pd.read_sql(sql, engine)
 
         # data = df[df['state_code']=='06']
-        df['state_code'] =df['state_code'].astype('Int64')
+        df['state_code'] = df['state_code'].astype(float)
         data = df[df['state_code']==int(self.state_code)]
         # print('hello:', self.state_code, df[df['state_code']=='53'].shape[0])
         print('State Code:', self.state_code)

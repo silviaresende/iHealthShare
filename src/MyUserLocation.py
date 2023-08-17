@@ -28,7 +28,7 @@ class MyUserLocation:
         # df_ = pd.read_csv('../data/csv/fips_state.csv')
         df_['id'] = df_['id'].astype('Int64')
         df_['region'] =df_['region'].astype('Int64')
-        df_['division'] =df_['division'].astype('Int64')
+        df_['division'] =df_['division'].astype(int)
         df_['state_fips'] =df_['state_fips'].astype('Int64')
         print("zipcode")
         self.user_state = str(df[df['zcta5']==int(self.zipcode)].iloc[0]['state'])
