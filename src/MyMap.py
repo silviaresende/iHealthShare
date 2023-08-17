@@ -74,7 +74,7 @@ class MyMap:
                         #    color_continuous_scale="Blues",
                            range_color=(0, 120000),
                            mapbox_style="carto-positron",
-                           zoom=5, center = lat_log,
+                           zoom=4, center = lat_log,
                            #zoom=1.5, 
                            # center = {"lat": 47.3225, "lon": -121.0520},
                            opacity=0.5,
