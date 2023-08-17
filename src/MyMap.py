@@ -26,13 +26,13 @@ class MyMap:
             port='5432'
         )
 
-        df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
-            'state_code': int,
-            'state_res': str,
-            'state_name': str,
-            'county_fips_code':	str,
-            'county_name': str
-        })
+        # df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
+        #     'state_code': int,
+        #     'state_res': str,
+        #     'state_name': str,
+        #     'county_fips_code':	str,
+        #     'county_name': str
+        # })
         # sql = "SELECT * FROM public.cases_by_counties_states_"
         
         # df = pd.read_sql(sql, engine)
