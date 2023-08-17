@@ -38,7 +38,7 @@ class MyMap:
         df = pd.read_sql(sql, engine)
 
         # data = df[df['state_code']=='06']
-        df['state_code'] = df['state_code'].astype('Int32')
+        df['state_code'] = df['state_code'].astype('Int64')
         data = df[df['state_code']==int(self.state_code)]
         # print('hello:', self.state_code, df[df['state_code']=='53'].shape[0])
         print('State Code:', self.state_code)
