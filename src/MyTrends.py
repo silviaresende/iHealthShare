@@ -9,14 +9,27 @@ class MyTrends:
         import matplotlib.pyplot as plt 
         from pathlib import Path
         import os 
+        import psycopg2
         
-        df = pd.read_csv('./data/data_charts/6_months_cases_by_counties_states.csv', index_col=0)
+        engine = psycopg2.connect(
+            database="postgres",
+            user="postgres",
+            password="_healthshare123",
+            host="healthshare.crpizus8bidb.us-east-2.rds.amazonaws.com",
+            port='5432'
+        )
+        sql = "SELECT * FROM public.six_months_cases_by_counties_states_"
         
-        data = df[df['state_fips_code']==int(self.state_code)];
+        df = pd.read_sql(sql, engine)
+        # df = pd.read_csv('./data/data_charts/6_months_cases_by_counties_states.csv', index_col=0)
+        df['state_fips_code'] = df['state_fips_code'].astype(float)
+        
+        data = df[df['state_fips_code']==float(self.state_code)];
+        # data = df[df['state_fips_code']==float(self.state_code)];
         data['case']= 1;
         df_cases = data[['case_month', 'case']]
         df_cases= pd.DataFrame(df_cases.groupby(by='case_month').value_counts())
-        df_cases.plot(figsize=(8,2.5), title="Number of Covid-19 Cases over 6 months");
+        # df_cases.plot(figsize=(8,2.5), title="Number of Covid-19 Cases over 6 months");
         
         ax =  df_cases.plot(figsize=(8,2.5));
 
@@ -41,6 +54,7 @@ class MyTrends:
             os.mkdir("./images")
         plt.savefig('./images/myTrends.png');
         print('.. Done!')
+        engine.close()
         
 
        

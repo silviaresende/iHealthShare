@@ -67,7 +67,7 @@ if len(user_input)>1:
     st.write("Cases by Counties ")
     st.image("./images/myBarChart.png")
     # st.image("https://images-rdts.s3.us-west-2.amazonaws.com/myMap.png")
-    
+    print("Chegou aqui")
     trend = MyTrends(myUserLocation.user_state, myUserLocation.user_state_name)
     st.write("Trends for Over Last Six Months ")
     st.image("./images/myTrends.png")

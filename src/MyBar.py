@@ -73,5 +73,6 @@ class MyBar:
         if not os.path.exists("./images"):
             os.mkdir("./images")
         fig.savefig('./images/myBarChart.png',)
+        engine.close()
        
        

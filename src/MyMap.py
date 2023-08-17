@@ -26,16 +26,16 @@ class MyMap:
             port='5432'
         )
 
-        # df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
-        #     'state_code': int,
-        #     'state_res': str,
-        #     'state_name': str,
-        #     'county_fips_code':	str,
-        #     'county_name': str
-        # })
-        sql = "SELECT * FROM public.cases_by_counties_states_"
+        df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0, dtype={
+            'state_code': int,
+            'state_res': str,
+            'state_name': str,
+            'county_fips_code':	str,
+            'county_name': str
+        })
+        # sql = "SELECT * FROM public.cases_by_counties_states_"
         
-        df = pd.read_sql(sql, engine)
+        # df = pd.read_sql(sql, engine)
 
         # data = df[df['state_code']=='06']
         df['state_code'] =df['state_code'].astype('Int64')
@@ -95,7 +95,7 @@ class MyMap:
         fig.update_layout(modebar=config)
         fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
         #fig.write_html('./images/MyMap_'f'{self.state_name}.html')
-        st.write("here!")
+        #st.write("here!")
         print('Saving MyMap..')
         if not os.path.exists("./images"):
             os.mkdir("./images")
@@ -108,6 +108,7 @@ class MyMap:
         fig.write_image("./images/myMap.png")
         fig.write_image("./images/myMap.png")
         fig.write_image("./images/myMap.svg")
+        engine.close()
         #fig.show()
 
 
