@@ -19,8 +19,9 @@ class MyTrends:
             port='5432'
         )
         sql = "SELECT * FROM public.six_months_cases_by_counties_states_"
-        
+        print("ops aqui")
         df = pd.read_sql(sql, engine)
+        print("Chegou aqui e leu o dado")
         # df = pd.read_csv('./data/data_charts/6_months_cases_by_counties_states.csv', index_col=0)
         df['state_fips_code'] = df['state_fips_code'].astype(float)
         
