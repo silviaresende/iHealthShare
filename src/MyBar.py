@@ -11,11 +11,13 @@ class MyBar:
         from pathlib import Path
         import os 
         import psycopg2
+        from sqlalchemy import text
 
         
         sql = "SELECT * FROM public.cases_by_counties_states_"
         
-        df = pd.read_sql(sql, engine)
+        # df = pd.read_sql(sql, engine)
+        df = pd.read_sql_query(text(sql), engine)
         #df = pd.read_csv('./data/data_charts/cases_by_counties_states.csv', index_col=0)
         df['state_code'] = df['state_code'].astype('Int64')
         df_state = df[df['state_code']==int(self.state_code)].sort_values(by='cases', ascending=False).head(5)

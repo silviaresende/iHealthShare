@@ -16,6 +16,7 @@ class MyMap:
         import plotly.express as px
         from pathlib import Path
         import os
+        from sqlalchemy import text
         # import psycopg2
         
         # engine = psycopg2.connect(
@@ -35,7 +36,8 @@ class MyMap:
         # })
         sql = "SELECT * FROM public.cases_by_counties_states_"
         
-        df = pd.read_sql(sql, engine)
+        # df = pd.read_sql(sql, engine)
+        df = pd.read_sql_query(text(sql), engine)
 
         # data = df[df['state_code']=='06']
         df['state_code'] = df['state_code'].astype('Int64')
@@ -53,7 +55,8 @@ class MyMap:
        
         sql = "SELECT * FROM public.us_state_capitals_"
         
-        df = pd.read_sql(sql, engine)
+        # df = pd.read_sql(sql, engine)
+        df = pd.read_sql_query(text(sql), engine)
         
         df['latitude'] = df['latitude'].astype(float)
         df['longitude'] = df['longitude'].astype(float)

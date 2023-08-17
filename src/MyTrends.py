@@ -10,20 +10,25 @@ class MyTrends:
         from pathlib import Path
         import os 
         import psycopg2
+        from sqlalchemy import text
+
         
         
-        sql = "SELECT * FROM public.six_months_cases_by_counties_states_"
+        sql = "SELECT * FROM public.six_months_cases_"
         print("ops aqui")
-        df = pd.read_sql(sql, engine)
+        # df = pd.read_sql(sql, engine)
+        df = pd.read_sql_query(text(sql), engine)
         print("Chegou aqui e leu o dado")
         # df = pd.read_csv('./data/data_charts/6_months_cases_by_counties_states.csv', index_col=0)
         df['state_fips_code'] = df['state_fips_code'].astype(float)
         
-        data = df[df['state_fips_code']==float(self.state_code)];
+        df_cases = df[df['state_fips_code']==float(self.state_code)];
         # data = df[df['state_fips_code']==float(self.state_code)];
-        data['case']= 1;
-        df_cases = data[['case_month', 'case']]
-        df_cases= pd.DataFrame(df_cases.groupby(by='case_month').value_counts())
+        
+        
+        df_cases.set_index('case_month')
+        # df_cases = data[['case_month', 'case']]
+        # df_cases= pd.DataFrame(df_cases.groupby(by='case_month').value_counts())
         # df_cases.plot(figsize=(8,2.5), title="Number of Covid-19 Cases over 6 months");
         
         ax =  df_cases.plot(figsize=(8,2.5));
