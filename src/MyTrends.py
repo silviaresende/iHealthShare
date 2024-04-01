@@ -1,10 +1,13 @@
 class MyTrends:
+    
     def __init__(self, state_code, state_name, engine) -> None:
+        
         self.state_code = state_code
         self.state_name = state_name
         self.GetTrends(engine)
 
     def GetTrends(self, engine) -> None:
+        
         import pandas as pd
         import matplotlib.pyplot as plt 
         from pathlib import Path
@@ -12,40 +15,26 @@ class MyTrends:
         import psycopg2
         from sqlalchemy import text
 
-        
-        
         sql = "SELECT * FROM public.six_months_cases_"
-        print("ops aqui")
-        # df = pd.read_sql(sql, engine)
-        df = pd.read_sql_query(text(sql), engine)
-        print("Chegou aqui e leu o dado")
-        # df = pd.read_csv('./data/data_charts/6_months_cases_by_counties_states.csv', index_col=0)
+        df = pd.read_sql(sql, engine)
         df['state_fips_code'] = df['state_fips_code'].astype(float)
         
         df_cases = df[df['state_fips_code']==float(self.state_code)];
-        # data = df[df['state_fips_code']==float(self.state_code)];
-        
-        
         df_cases.set_index('case_month')
-        # df_cases = data[['case_month', 'case']]
-        # df_cases= pd.DataFrame(df_cases.groupby(by='case_month').value_counts())
-        # df_cases.plot(figsize=(8,2.5), title="Number of Covid-19 Cases over 6 months");
-        
+        plt.switch_backend('Agg') 
         ax =  df_cases.plot(figsize=(8,2.5));
 
         # Add Plot Title
         ax.grid(visible=True, color='grey',
                         linestyle='-.', linewidth=0.5,
                         alpha=0.2)
-        #ax.set_title("Trends Over Last Six Months",loc='left' )
         plt.xlabel("")
         plt.ylabel("Number of Cases  ")
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
         ax.spines['bottom'].set_visible(False)
         ax.spines['left'].set_visible(False)
-        ax.get_xaxis().set_ticks([])
-        #ax.get_yaxis().set_ticks([])        
+        ax.get_xaxis().set_ticks([])       
         ax.legend().set_visible(False)
 
         print('Saving Trends..')
@@ -53,7 +42,3 @@ class MyTrends:
             os.mkdir("./images")
         plt.savefig('./images/myTrends.png');
         print('.. Done!')
-       
-        
-
-       

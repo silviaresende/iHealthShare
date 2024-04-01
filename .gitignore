@@ -1,9 +1,7 @@
 
-/AnimaPackage-React-VhCQV
+
 /notebooks
 /src/__pycache__
-/src/MyDonut.py
-/src/pyServer.py
 
 
 /data/bd
@@ -34,4 +32,6 @@ data/csv/zipcode_to_county.csv.zip
 /data/data_cleaned
 /data/img
 /data/json
+
+src - .zip
 

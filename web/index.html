@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <header>iHealthShare</header>
+    <body>
+        
+        <p>Please inform your zipcode area below: </p>
+        <input type="text" id="zipcode">
+        <button type="button" onclick="loadDoc()">Request data </button>
+        <p id="demo"></p>
+
+        <div> Getting data analysis for user location:</div>
+            
+        <div id="user_state_name">  </div>
+
+
+        <script>
+            function loadDoc() {
+                
+                var xhttp = new XMLHttpRequest();
+                var zip = document.getElementById("zipcode").value;  
+                
+                xhttp.onreadystatechange = function() {
+                       
+                    if (xhttp.readyState == XMLHttpRequest.DONE) {
+                        
+                    
+                        console.log(" AQUI "+this.responseText)  
+                        var data = JSON.parse(this.responseText); 
+                    
+                        document.getElementById("user_state_name").innerText = data["user_state_name"]
+                        }
+                    loadDashboard();
+                   
+                };
+
+                xhttp.open("GET", "http://127.0.0.1:5000/get-user-location/"+zip, true);
+                xhttp.send();
+            }
+            
+            function loadDashboard(){
+                            
+                var url_html;
+                document.getElementById("url_html").src = "http://127.0.0.1:5000/charts/myMap.html"
+
+            }    
+
+        </script>
+
+        <iframe id="url_html" width="600" height="400"></iframe> 
+
+    </body>
+</html>
